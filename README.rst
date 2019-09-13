@@ -5,12 +5,11 @@ Example charts repo throught github docs
 ## How it works
 
 * Point github pages to docs folder (one time thing)
-* Run the `generate_charts.sh` script
+* Run the `update_upstream_charts` and `generate_charts.sh` script
 * git add, commit, and push.
 
 ## What does generate_charts do?
 
-* Upstream source update
 * For each chart:
 
   * Ensuring local changes are applied (helm chart repo location and version)
