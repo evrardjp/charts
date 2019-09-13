@@ -19,7 +19,7 @@ for chartfolder in openstack-helm-infra/helm-toolkit $(find openstack-helm opens
         fi
         sed -i "s/version: 0.1.0/version: 1.0.${version}/" Chart.yaml
         if [[ -d values_overrides ]]; then
-            cp values_overrides/*suse* ./
+            cp -n values_overrides/*suse* ./
         fi
     popd
     pushd $(dirname $chartfolder)
@@ -28,11 +28,3 @@ for chartfolder in openstack-helm-infra/helm-toolkit $(find openstack-helm opens
     popd
 done
 helm repo index docs --url https://evrardjp.github.com/charts
-
-# Cleanup the upstream repos.
-for folder in openstack-helm-infra openstack-helm; do
-    pushd $folder
-        git clean -fd
-        git checkout -- .
-    popd
-done
