@@ -14,8 +14,8 @@ for chartfolder in openstack-helm-infra/helm-toolkit $(find openstack-helm opens
                 mkdir -p charts/helm-toolkit
             fi
             cp -r ${main_folder}/openstack-helm-infra/helm-toolkit/* charts/helm-toolkit/
-            sed -i 's/localhost:8879/evrardjp.github.com/' requirements.yaml
-            sed -i "s/version: 0.1.0/version: 1.0.${version}/" requirements.yaml
+            sed -i 's#http://localhost:8879#https://evrardjp.github.com#' requirements.yaml
+            sed -i "s#version: 0.1.0#version: 1.0.${version}#" requirements.yaml
         fi
         sed -i "s/version: 0.1.0/version: 1.0.${version}/" Chart.yaml
         if [[ -d values_overrides ]]; then
