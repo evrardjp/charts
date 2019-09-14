@@ -15,7 +15,7 @@
 
 description: OpenStack-Helm Kubernetes keystone webhook
 name: kubernetes-keystone-webhook
-version: 1.0.7
+version: 0.1.0
 home: https://github.com/kubernetes/cloud-provider-openstack
 sources:
   - https://github.com/elastic/kibana
