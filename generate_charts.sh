@@ -1,23 +1,29 @@
 #!/bin/bash
 
 set -x
+set -e
 
-# Determine current version
+# Vendor in the latest upstream charts
+git subtree pull --prefix openstack-helm-infra/ https://github.com/openstack/openstack-helm-infra.git master --squash -m "Squash merged OSH-infra from master upstream"
+git subtree pull --prefix openstack-helm/ https://github.com/openstack/openstack-helm.git master --squash --squash -m "Squash merged OSH from master upstream"
+
+# Determine next version number
 version=$(git rev-list --count --no-merges HEAD)
+
 main_folder=$(pwd)
 
-for chartfolder in openstack-helm-infra/helm-toolkit $(find openstack-helm openstack-helm-infra -maxdepth 1 -mindepth 1 -type d | grep -v -e helm-toolkit -e tools -e doc -e releasenotes -e zuul -e playbooks -e roles -e test); do
+for chartfolder in openstack-helm-infra/helm-toolkit $(dirname $(find openstack-helm openstack-helm-infra -maxdepth 2 -mindepth 2 -type f -name Chart.yaml)); do
     pushd $chartfolder
         helmchartname=$(basename ${chartfolder})
-        if [[ "$helmchartname" != "helm-toolkit" ]]; then
-            if [[ ! -d charts/helm-toolkit ]]; then
-                mkdir -p charts/helm-toolkit
-            fi
+        sed -i "s/version: .*/version: 1.0.${version}/" Chart.yaml
+        # Some charts don't have requirements like lockdown or htk
+        # The only requirement is always htk. Easy.
+        if [[ -f requirements.yaml ]] && [[ "${helmchartname}" != "helm-toolkit" ]]; then
+            mkdir -p charts/helm-toolkit
             cp -r ${main_folder}/openstack-helm-infra/helm-toolkit/* charts/helm-toolkit/
             sed -i 's#http://localhost:8879#https://evrardjp.github.com#' requirements.yaml
-            sed -i "s#version: 0.1.0#version: 1.0.${version}#" requirements.yaml
+            sed -i "s#version: .*#version: 1.0.${version}#" requirements.yaml
         fi
-        sed -i "s/version: 0.1.0/version: 1.0.${version}/" Chart.yaml
         if [[ -d values_overrides ]]; then
             cp -n values_overrides/*suse* ./
         fi
