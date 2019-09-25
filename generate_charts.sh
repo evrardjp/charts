@@ -25,7 +25,7 @@ for chartfolder in openstack-helm-infra/helm-toolkit $(dirname $(find openstack-
             sed -i "s#version: .*#version: 1.0.${version}#" requirements.yaml
         fi
         if [[ -d values_overrides ]]; then
-            cp -n values_overrides/*suse* ./
+            python ${main_folder}/yaml-tools.py merge -i values.yaml values_overrides/*suse*.yaml -o suse-values.yaml
         fi
     popd
     pushd $(dirname $chartfolder)
