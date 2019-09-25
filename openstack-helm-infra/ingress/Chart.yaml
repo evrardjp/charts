@@ -14,7 +14,7 @@
 
 description: OpenStack-Helm Ingress Controller
 name: ingress
-version: 1.0.10
+version: 1.0.15
 home: https://github.com/kubernetes/ingress
 sources:
   - https://github.com/kubernetes/ingress

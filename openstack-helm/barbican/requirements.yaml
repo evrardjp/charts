@@ -13,4 +13,4 @@
 dependencies:
   - name: helm-toolkit
     repository: https://evrardjp.github.com/charts
-    version: 1.0.10
+    version: 1.0.15

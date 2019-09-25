@@ -15,7 +15,7 @@
 apiVersion: v1
 description: OpenStack-Helm Glance
 name: glance
-version: 1.0.10
+version: 1.0.15
 home: https://docs.openstack.org/glance/latest/
 icon: https://www.openstack.org/themes/openstack/images/project-mascots/Glance/OpenStack_Project_Glance_vertical.png
 sources:

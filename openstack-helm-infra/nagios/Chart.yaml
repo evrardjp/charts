@@ -14,7 +14,7 @@
 
 description: OpenStack-Helm Nagios
 name: nagios
-version: 1.0.10
+version: 1.0.15
 home: https://www.nagios.org
 sources:
   - https://opendev.org/openstack/openstack-helm-addons

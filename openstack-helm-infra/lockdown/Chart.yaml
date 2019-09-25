@@ -17,4 +17,4 @@ appVersion: "1.0"
 description: |
   A helm chart used to lockdown all ingress and egress for a namespace
 name: lockdown
-version: 1.0.10
+version: 1.0.15
