@@ -34,3 +34,8 @@ for chartfolder in openstack-helm-infra/helm-toolkit $(dirname $(find openstack-
     popd
 done
 helm repo index docs --url https://evrardjp.github.com/charts
+
+echo "You can now merge the changes with:
+git add .
+git commit -m \"New release 1.0.${version}\"
+git push"
