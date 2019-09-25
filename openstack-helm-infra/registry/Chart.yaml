@@ -14,7 +14,7 @@
 
 description: OpenStack-Helm Docker Registry
 name: registry
-version: 1.0.15
+version: 1.0.17
 home: https://github.com/kubernetes/ingress
 sources:
   - https://opendev.org/openstack/openstack-helm

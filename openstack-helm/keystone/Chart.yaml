@@ -15,7 +15,7 @@
 apiVersion: v1
 description: OpenStack-Helm Keystone
 name: keystone
-version: 1.0.15
+version: 1.0.17
 home: https://docs.openstack.org/keystone/latest/
 icon: https://www.openstack.org/themes/openstack/images/project-mascots/Keystone/OpenStack_Project_Keystone_vertical.png
 sources:

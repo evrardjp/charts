@@ -15,7 +15,7 @@
 apiVersion: v1
 description: OpenStack-Helm Elastic APM Server
 name: elastic-apm-server
-version: 1.0.15
+version: 1.0.17
 home: https://www.elastic.co/guide/en/apm/get-started/current/index.html
 sources:
   - https://github.com/elastic/apm-server
